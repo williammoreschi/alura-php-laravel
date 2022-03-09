@@ -11,22 +11,4 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('/helloword', function(){
-    echo "Ola mundo";
-});
-
-Route::get('/series', function(){
-    $series = ["Breaking Bad","Elementary","Sherlock Holmes"];
-
-    $html = "<ul>";
-    foreach ($series as $serie) {
-        $html .= "<li>{$serie}</li>";
-    }
-    $html .= "</ul>";
-
-    return $html;
-});
+Route::get('/series', 'SeriesController@listarSeries');
