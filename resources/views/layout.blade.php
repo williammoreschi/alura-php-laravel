@@ -12,16 +12,9 @@
 <body>
     <div class="container">
         <div class="jumbotron">
-            <h1>Adicionar Séries</h1>
+            <h1>@yield('cabecalho')</h1>
         </div>
-        <form method="post">
-            <div class="form-group">
-                <label for="nome">Nome</label>
-                <input type="text" class="form-control" name="nome" id="nome">
-
-            </div>
-            <button class="btn btn-primary">Adicionar</button>
-        </form>
+        @yield('conteudo')
     </div>
 </body>
 
