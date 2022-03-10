@@ -15,7 +15,18 @@ Séries
 @endif
 <ul class="list-group">
     @foreach($series as $key => $serie)
-    <li class="list-group-item">{{$serie->nome}}</li>
+    <li class="d-flex justify-content-between list-group-item">
+        {{$serie->nome}}
+        <form
+        action="/series/{{$serie->id}}" 
+        method="post"
+        onsubmit="return confirm('Tem certeza que deseja remover {{addslashes($serie->nome)}}')"
+        >
+            @csrf
+            @method('DELETE')
+            <button class="btn btn-danger" >Excluir</button>
+        </form>
+    </li>
     @endforeach
 </ul>
 @endsection
