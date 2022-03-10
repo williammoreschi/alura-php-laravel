@@ -11,7 +11,7 @@
 |
 */
 
-Route::get('/series', 'SeriesController@index');
-Route::get('/series/criar', 'SeriesController@create');
+Route::get('/series', 'SeriesController@index')->name('listar_serie');
+Route::get('/series/criar', 'SeriesController@create')->name('form_criar_serie');
 Route::post('/series/criar', 'SeriesController@store');
 Route::delete('/series/{id}','SeriesController@destroy');

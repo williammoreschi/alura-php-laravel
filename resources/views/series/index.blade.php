@@ -6,7 +6,7 @@ Séries
 
 @section('conteudo')
 <div class="align-items-end d-flex flex-column">
-    <a href="/series/criar" class="btn btn-dark mb-4">Adicionar</a>
+    <a href="{{route('form_criar_serie')}}" class="btn btn-dark mb-4">Adicionar</a>
 </div>
 @if($mensagem)
 <div class="alert alert-success">
@@ -15,7 +15,7 @@ Séries
 @endif
 <ul class="list-group">
     @foreach($series as $key => $serie)
-    <li class="d-flex justify-content-between list-group-item">
+    <li class="d-flex justify-content-between list-group-item align-items-center">
         {{$serie->nome}}
         <form
         action="/series/{{$serie->id}}" 
