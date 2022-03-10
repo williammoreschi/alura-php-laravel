@@ -9,7 +9,7 @@ class SeriesController extends Controller
 {
     public function index(Request $request)
     {
-        $series = ["Breaking Bad", "Elementary", "Sherlock Holmes"];
+        $series = Serie::all();
         return view('series.index', compact('series'));
     }
 
