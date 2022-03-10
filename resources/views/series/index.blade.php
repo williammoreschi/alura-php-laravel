@@ -24,7 +24,7 @@ Séries
         >
             @csrf
             @method('DELETE')
-            <button class="btn btn-danger" >Excluir</button>
+            <button class="btn btn-danger" ><i class="far fa-trash-alt"></i></button>
         </form>
     </li>
     @endforeach
