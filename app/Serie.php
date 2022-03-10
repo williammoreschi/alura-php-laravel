@@ -10,7 +10,7 @@ class Serie extends Model
     public $timestamps = false;
     protected $fillable = ['nome'];
 
-    public function Tempodaras()
+    public function tempodaras()
     {
         return $this->hasMany(Temporada::class);
     }
