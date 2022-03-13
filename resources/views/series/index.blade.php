@@ -8,11 +8,7 @@ Séries
 <div class="align-items-end d-flex flex-column">
     <a href="{{route('form_criar_serie')}}" class="btn btn-dark mb-4">Adicionar</a>
 </div>
-@if($mensagem)
-<div class="alert alert-success">
-    {{ $mensagem }}
-</div>
-@endif
+@include('mensagem',['mensagem'=>$mensagem,'tipo'=>'success'])
 <ul class="list-group">
     @foreach($series as $key => $serie)
     <li class="d-flex justify-content-between list-group-item align-items-center">

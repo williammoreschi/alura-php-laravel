@@ -7,11 +7,7 @@
 
 @section('conteudo')
 
-@if(!empty($mensagem))
-<div class="alert alert-success">
-    {{ $mensagem }}
-</div>
-@endif
+@include('mensagem',['mensagem'=>$mensagem,'tipo'=>'info'])
 
 <form action="/temporadas/{{$temporada->id}}/episodios/assistidos" method="post">
     @csrf
