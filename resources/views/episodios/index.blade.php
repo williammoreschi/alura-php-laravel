@@ -17,7 +17,7 @@
             Episódio {{$episodio->numero}}
             <input 
             type="checkbox" 
-            class="" 
+            class="apple-switch" 
             name="episodio[]" 
             value="{{$episodio->id}}"
             id="" 
