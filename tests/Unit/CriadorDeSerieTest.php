@@ -10,11 +10,9 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class CriadorDeSerieTest extends TestCase
 {
-    /**
-     * A basic unit test example.
-     *
-     * @return void
-     */
+
+    use RefreshDatabase;
+    
     public function testCriaSerie()
     {
         $criadorDeSerie = new CriadorDeSerie();
