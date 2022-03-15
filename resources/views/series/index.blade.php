@@ -5,9 +5,13 @@ Séries
 @endsection
 
 @section('conteudo')
+
+@auth
 <div class="align-items-end d-flex flex-column">
     <a href="{{route('form_criar_serie')}}" class="btn btn-dark mb-4">Adicionar</a>
 </div>
+@endAuth
+
 @include('mensagem',['mensagem'=>$mensagem,'tipo'=>'success'])
 <ul class="list-group">
     @foreach($series as $key => $serie)
@@ -16,19 +20,22 @@ Séries
         <div class="input-group w-50" hidden id="div-input-nome-serie-{{ $serie->id }}">
             <input type="text" class="form-control" value="{{ $serie->nome }}">
             <div class="input-group-append">
-                <button class="btn btn-primary" onclick="editarSerie({{ $serie->id }})">
+                <button class="btn btn-primary" onclick="editarSerie('{{ $serie->id }}')">
                     <i class="fas fa-check"></i>
                 </button>
                 @csrf
             </div>
         </div>
         <span class="d-flex">
-            <button class="btn btn-primary mr-1" title="Editar Série" onclick="toggleInput({{ $serie->id }})">
+            @auth
+            <button class="btn btn-primary mr-1" title="Editar Série" onclick="toggleInput('{{ $serie->id }}')">
                 <i class="fas fa-pencil-alt"></i>
             </button>
+            @endauth
             <a href="/series/{{$serie->id}}/temporadas" title="Visualizar Temporada(s)" class="btn btn-success d-flex align-items-center mr-1">
                 <i class="fas fa-external-link-square-alt"></i>
             </a>
+            @auth
             <form
             action="/series/{{$serie->id}}" 
             method="post"
@@ -40,6 +47,7 @@ Séries
                 @method('DELETE')
                 <button class="btn btn-danger" ><i class="far fa-trash-alt"></i></button>
             </form>
+            @endauth
         </span>
     </li>
     @endforeach
