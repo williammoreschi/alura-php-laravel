@@ -26,8 +26,8 @@ class EpisodiosController extends Controller
                 $episodio->assistido = ($assistidos) ? in_array($episodio->id, $assistidos) : false;
             }
         );
-        $temporada->push(); // Envia todas as alteraçoes ocorridas;
-        $request->session()->flash('mensagem',"Dados alerado com sucesso");
+        $temporada->push(); // Envia todas as alterações ocorridas;
+        $request->session()->flash('mensagem',"Dados alterado com sucesso");
         return redirect()->back();
     }
 }
