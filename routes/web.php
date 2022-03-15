@@ -11,6 +11,7 @@
 |
 */
 
+use App\Mail\NovaSerie;
 use Illuminate\Support\Facades\Auth;
 
 Route::get('/series', 'SeriesController@index')->name('listar_serie');
@@ -35,4 +36,8 @@ Route::post('/registrar', 'RegistroController@store');
 Route::get('/sair', function () {
     Auth::logout();
     return redirect('/entrar');
+});
+
+Route::get('/visualizar-email',function (){
+    return new NovaSerie('Arrow',1,3);
 });
