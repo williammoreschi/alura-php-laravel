@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\SeriesFormRequest;
+use App\Mail\NovaSerie;
 use App\Serie;
-use App\Services\{CriadorDeSerie, RemovedorDeSerie};
+use App\Services\{CriadorDeSerie, EmailNovaSerie, RemovedorDeSerie};
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class SeriesController extends Controller
 {
@@ -22,7 +24,7 @@ class SeriesController extends Controller
         return view('series.create');
     }
 
-    public function store(SeriesFormRequest $request, CriadorDeSerie $criadorDeSerie)
+    public function store(SeriesFormRequest $request, CriadorDeSerie $criadorDeSerie, EmailNovaSerie $enviarEmail)
     {
 
         $serie = $criadorDeSerie->criarSerie(
@@ -30,6 +32,8 @@ class SeriesController extends Controller
             $request->qtd_temporadas,
             $request->ep_por_temporada
         );
+
+        $enviarEmail->enviarEmail($request);
 
         $request->session()->flash(
             'mensagem',
