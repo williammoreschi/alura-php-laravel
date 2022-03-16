@@ -13,7 +13,8 @@ class EmailNovaSerie
     {
         $users = User::all();
 
-        foreach ($users as $user) {
+        foreach ($users as $key => $user) {
+            $multiplicador = $key+1;
             /**
              * É necessário criar um template para cada usuário, caso contrario
              * apartir do segundo seria colocado nome do anterior 
@@ -26,7 +27,12 @@ class EmailNovaSerie
             );
             $email->subject = "Nova Série Adicionada";
     
-            Mail::to($user)->send($email);
+            //Mail::to($user)->send($email); // envia o email direto;
+            //Mail::to($user)->queue($email); // manda para fila;
+            
+            // manda para fila também, mas usa um delay de 10 em 10 entre cada tentativa;
+            $when = now()->addSeconds($multiplicador*10);
+            Mail::to($user)->later($when, $email);
         }
     }
 }
