@@ -4,12 +4,11 @@ namespace App\Services;
 
 use App\Mail\NovaSerie;
 use App\User;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 
 class EmailNovaSerie
 {
-    public function enviarEmail(Request $request): void
+    public function enviarEmail(string $nomeSerie, int $qtdTemporadas, int $qtdEpisodios): void
     {
         $users = User::all();
 
@@ -21,9 +20,9 @@ class EmailNovaSerie
              * ex: (fuluno1,fulano2) (fuluno1,fulano2,fulano3)...
             */
             $email = new NovaSerie(
-                $request->nome,
-                $request->qtd_temporadas,
-                $request->ep_por_temporada
+                $nomeSerie,
+                $qtdTemporadas,
+                $qtdEpisodios
             );
             $email->subject = "Nova Série Adicionada";
     
