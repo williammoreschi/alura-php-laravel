@@ -9,14 +9,15 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 
 class EnviarEmailNovaSerieListener implements ShouldQueue
 {
+    protected $emailNovaSerie;
     /**
      * Create the event listener.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(EmailNovaSerie $emailNovaSerie)
     {
-        //
+        $this->emailNovaSerie = $emailNovaSerie;
     }
 
     /**
@@ -27,8 +28,7 @@ class EnviarEmailNovaSerieListener implements ShouldQueue
      */
     public function handle(NovaSerieEvent $event)
     {
-        $emailNovaSerie = new EmailNovaSerie();
-        $emailNovaSerie->enviarEmail(
+        $this->emailNovaSerie->enviarEmail(
             $event->nomeSerie,
             $event->qtdTempodadas,
             $event->qtdEpisodios
