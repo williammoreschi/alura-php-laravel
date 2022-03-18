@@ -7,7 +7,7 @@ use App\Services\EmailNovaSerie;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-class EnviarEmailNovaSerieListener
+class EnviarEmailNovaSerieListener implements ShouldQueue
 {
     /**
      * Create the event listener.
