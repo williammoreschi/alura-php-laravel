@@ -16,7 +16,10 @@
 <ul class="list-group">
     @foreach($series as $key => $serie)
     <li class="d-flex justify-content-between list-group-item align-items-center">
-        <span id="nome-serie-{{$serie->id}}">{{$serie->nome}}</span>
+        <div>
+            <img src="{{$serie->image_url}}" alt="" height="50" width="50" class="bg-light border object-fit-cover p-1 rounded-circle" />
+            <span id="nome-serie-{{$serie->id}}">{{$serie->nome}}</span>
+        </div>
         <div class="input-group w-50" hidden id="div-input-nome-serie-{{ $serie->id }}">
             <input type="text" class="form-control" value="{{ $serie->nome }}">
             <div class="input-group-append">
@@ -36,16 +39,10 @@
                 <i class="fas fa-external-link-square-alt"></i>
             </a>
             @auth
-            <form
-            action="/series/{{$serie->id}}" 
-            method="post"
-            title="Remover Série"
-            onsubmit="return confirm('Tem certeza que deseja remover {{addslashes($serie->nome)}}')"
-            class="m-0"
-            >
+            <form action="/series/{{$serie->id}}" method="post" title="Remover Série" onsubmit="return confirm('Tem certeza que deseja remover {{addslashes($serie->nome)}}')" class="m-0">
                 @csrf
                 @method('DELETE')
-                <button class="btn btn-danger" ><i class="far fa-trash-alt"></i></button>
+                <button class="btn btn-danger"><i class="far fa-trash-alt"></i></button>
             </form>
             @endauth
         </span>
@@ -55,33 +52,33 @@
 @endsection
 
 <script>
-    function toggleInput(serieId){
+    function toggleInput(serieId) {
         const nomeSerieEl = document.querySelector(`#nome-serie-${serieId}`);
         const divInputSerieEl = document.querySelector(`#div-input-nome-serie-${serieId}`);
 
-        if(nomeSerieEl.hasAttribute('hidden')){
+        if (nomeSerieEl.hasAttribute('hidden')) {
             nomeSerieEl.removeAttribute('hidden');
             divInputSerieEl.hidden = true;
-        }else{
+        } else {
             nomeSerieEl.hidden = true;
             divInputSerieEl.removeAttribute('hidden')
         }
     }
 
-    function editarSerie(serieId){
+    function editarSerie(serieId) {
         let formData = new FormData();
 
         const nome = document.querySelector(`#div-input-nome-serie-${serieId} > input`).value;
         const token = document.querySelector(`input[name='_token']`).value;
 
-        formData.append("nome",nome);
-        formData.append("_token",token);
+        formData.append("nome", nome);
+        formData.append("_token", token);
 
         const url = `/series/${serieId}/editaNome`;
-        fetch(url,{
+        fetch(url, {
             body: formData,
             method: 'POST'
-        }).then(()=>{
+        }).then(() => {
             toggleInput(serieId);
             document.querySelector(`#nome-serie-${serieId}`).textContent = nome;
         });

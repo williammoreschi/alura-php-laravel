@@ -1,7 +1,10 @@
 @extends('layout')
 
 @section('cabecalho')
-Temporadas de {{$serie->nome}}
+<div class="align-items-center d-flex">
+    <img src="{{$serie->image_url}}" alt="" height="175" width="175" class="bg-light border object-fit-cover p-1 rounded-circle mr-4" />
+    <h3 class="m-0">Temporadas<br/>{{$serie->nome}}</h3>
+</div>
 @endsection
 
 @section('conteudo')
