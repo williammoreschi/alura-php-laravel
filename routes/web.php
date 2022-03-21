@@ -29,6 +29,7 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/', 'EntrarController@index');
+Route::post('/', 'EntrarController@entrar');
 Route::get('/entrar', 'EntrarController@index');
 Route::post('/entrar', 'EntrarController@entrar');
 Route::get('/registrar', 'RegistroController@create');
