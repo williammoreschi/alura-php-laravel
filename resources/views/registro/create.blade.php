@@ -1,7 +1,7 @@
 @extends('layout')
 
 @section('cabecalho')
-    Registrar-se
+    <h3 class="m-0">Registrar-se</h3>
 @endsection
 
 @section('conteudo')

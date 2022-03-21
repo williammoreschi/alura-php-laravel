@@ -1,7 +1,7 @@
 @extends('layout')
 
 @section('cabecalho')
-Séries
+<h3 class="m-0" >Séries</h3>
 @endsection
 
 @section('conteudo')
