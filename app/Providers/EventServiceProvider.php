@@ -23,10 +23,10 @@ class EventServiceProvider extends ServiceProvider
         NovaSerieEvent::class => [
             EnviarEmailNovaSerieListener::class,
             LogNovaSerieListener::class
-        ],
+        ],/*
         SerieApagada::class => [
             ExcluirCapaSerie::class
-        ]
+        ]*/
     ];
 
     /**
