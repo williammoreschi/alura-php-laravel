@@ -24,7 +24,8 @@ class SeriesFormRequest extends FormRequest
     public function rules()
     {
         return [
-            'nome' => 'required|min:2'
+            'nome' => 'required|min:2',
+            'capa' => 'image|mimes:jpeg,png|max:2048'
         ];
     }
 
