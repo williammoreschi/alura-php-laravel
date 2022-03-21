@@ -12,7 +12,7 @@ class CriadorDeSerie
         string $nome,
         int $qtd_temporadas,
         int $ep_por_temporada,
-        string $path_image
+        ?string $path_image
     ): Serie {
         DB::beginTransaction();
         $serie = Serie::create(["nome" => $nome, 'capa' => $path_image]);
