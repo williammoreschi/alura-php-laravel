@@ -1,8 +1,13 @@
 @extends('layout')
 
 @section('cabecalho')
-<small><span class="badge badge-secondary">{{$serie->nome}}</span></small>
-<p>Temporada {{$temporada->numero}}</p>
+<div class="align-items-center d-flex">
+<img src="{{$serie->image_url}}" alt="" height="175" width="175" class="bg-light border object-fit-cover p-1 rounded-circle mr-4" />
+    <div>
+        <h2 class="m-0">Temporada {{$temporada->numero}}</h2>
+        <h3 class="m-0"><small><span class="badge badge-secondary">{{$serie->nome}}</span></small></h3>
+    </div>
+</div>
 @endsection
 
 @section('conteudo')

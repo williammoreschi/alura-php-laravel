@@ -24,8 +24,8 @@
         @endGuest
     </nav>
     <div class="container">
-        <div class="jumbotron">
-            <h1>@yield('cabecalho')</h1>
+        <div class="jumbotron p-2">
+            @yield('cabecalho')
         </div>
         @yield('conteudo')
     </div>

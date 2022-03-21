@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\NovaSerieEvent;
 use App\Http\Requests\SeriesFormRequest;
 use App\Serie;
 use App\Services\{CriadorDeSerie, RemovedorDeSerie};
@@ -9,7 +10,7 @@ use Illuminate\Http\Request;
 
 class SeriesController extends Controller
 {
-    
+
     public function index(Request $request)
     {
         $series = Serie::query()->orderBy('nome')->get();
@@ -24,12 +25,24 @@ class SeriesController extends Controller
 
     public function store(SeriesFormRequest $request, CriadorDeSerie $criadorDeSerie)
     {
+        $path_image = null;
+        if ($request->hasFile('capa')) {
+            $path_image = $request->file('capa')->store('images');
+        }
 
         $serie = $criadorDeSerie->criarSerie(
             $request->nome,
             $request->qtd_temporadas,
+            $request->ep_por_temporada,
+            $path_image
+        );
+
+        $eventoNovaSerie = new NovaSerieEvent(
+            $request->nome,
+            $request->qtd_temporadas,
             $request->ep_por_temporada
         );
+        event($eventoNovaSerie);
 
         $request->session()->flash(
             'mensagem',
@@ -40,7 +53,7 @@ class SeriesController extends Controller
 
     public function destroy(Request $request, RemovedorDeSerie $removedorDeSerie)
     {
-    
+
         $nomeSerie = $removedorDeSerie->removerSerie($request->id);
         $request->session()->flash(
             'mensagem',
