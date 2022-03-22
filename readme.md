@@ -1,4 +1,4 @@
-# Projeto usando o Framework Laravel na versão 5.8.*
+# Projeto usando o Framework Laravel na versão 8.83.5
 ## O projeto foi divido em 4 partes
 ### 1 - Conhecendo o Laravel
 - Instalação e configuração inicial;
