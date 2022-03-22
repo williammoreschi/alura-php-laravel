@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Unit;
+namespace Tests\Feature;
 
 use App\Services\CriadorDeSerie;
 use App\Services\RemovedorDeSerie;
@@ -23,7 +23,8 @@ class RemovedorDeSerieTest extends TestCase
         $this->serie = $criadorDeSerie->criarSerie(
             'Serie de Teste',
             1,
-            1
+            1,
+            null
         );
     }
 

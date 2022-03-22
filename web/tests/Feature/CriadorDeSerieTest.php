@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Unit;
+namespace Tests\Feature;
 
 use App\Serie;
 use App\Services\CriadorDeSerie;
@@ -17,7 +17,7 @@ class CriadorDeSerieTest extends TestCase
     {
         $criadorDeSerie = new CriadorDeSerie();
         $nomeDaSerie = "Série de Teste";
-        $serieCriada = $criadorDeSerie->criarSerie($nomeDaSerie, 1, 1);
+        $serieCriada = $criadorDeSerie->criarSerie($nomeDaSerie, 1, 1, null);
 
         $this->assertInstanceOf(Serie::class, $serieCriada);
         $this->assertDatabaseHas('series', ['nome' => $nomeDaSerie]);
