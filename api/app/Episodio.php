@@ -18,9 +18,18 @@ class Episodio extends Model
     /** 
      * Quando for retornar o(s) episodio(s)
      * o valor de assistido será um boleano
-    */
+     */
     public function getAssistidoAttribute($valor): bool
     {
         return $valor;
+    }
+
+    /**
+     * Nesse exemplo quando valor for acessado
+     * ele vai devolver preenchido com tralha(#) 
+     */
+    public function getNumeroAttribute($valor): string
+    {
+        return "#{$valor}";
     }
 }
