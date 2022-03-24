@@ -14,4 +14,13 @@ class Serie extends Model
     {
         return $this->hasMany(Episodio::class);
     }
+
+    /**
+     * Na hora de cadastrar uma nova série
+     * o nome que for enviado vai ser colocado
+     * em caixa alta
+     */
+    public function setNomeAttribute($valor){
+        $this->attributes['nome'] = mb_strtoupper($valor);
+    }
 }

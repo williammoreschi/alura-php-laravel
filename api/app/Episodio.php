@@ -14,4 +14,13 @@ class Episodio extends Model
     {
         return $this->belongsTo(Serie::class);
     }
+
+    /** 
+     * Quando for retornar o(s) episodio(s)
+     * o valor de assistido será um boleano
+    */
+    public function getAssistidoAttribute($valor): bool
+    {
+        return $valor;
+    }
 }
