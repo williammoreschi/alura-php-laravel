@@ -24,12 +24,4 @@ class Episodio extends Model
         return $valor;
     }
 
-    /**
-     * Nesse exemplo quando valor for acessado
-     * ele vai devolver preenchido com tralha(#) 
-     */
-    public function getNumeroAttribute($valor): string
-    {
-        return "#{$valor}";
-    }
 }
