@@ -16,11 +16,26 @@ class Serie extends Model
      * se variavel $perPage for comentada ou não existir o valor 
      * padrão usado pelo o ORM é de 15 itens por página
      */
-    protected $perPage = 5; 
+    protected $perPage = 5;
+    protected $appends = ['links'];
+    protected $hidden = ['episodios'];
 
     public function episodios()
     {
         return $this->hasMany(Episodio::class);
     }
 
+    public function getLinksAttribute(): array
+    {
+        $episodios = $this->episodios->map(function(Episodio $episodio){
+            return "/api/episodios/{$episodio->id}";
+        });
+        return [
+            'self' => "/api/series/{$this->id}",
+            'episodios' => [
+                "album" => "/api/series/{$this->id}/episodios",
+                "lista" => $episodios
+            ],
+        ];
+    }
 }
