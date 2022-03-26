@@ -17,6 +17,8 @@ $router->get('/', function () use ($router) {
     return $router->app->version();
 });
 
+$router->get('api/login', 'TokenController@gerarToken');
+
 $router->group(['prefix' => 'api', 'middleware' => 'auth'], function () use ($router) {
     $router->group(['prefix' => 'series'],function() use($router){
         $router->post('', 'SeriesController@store');
