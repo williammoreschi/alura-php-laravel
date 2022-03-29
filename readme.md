@@ -25,4 +25,8 @@
 - Exclusão do arquivo usando job;
 
 ### 4 - Criando uma API Rest com Lumen
-- Em andamento 
+- Criando os Endpoint
+- Criando o CRUD
+- Lapidando a aplicação
+- Navegando e paginando os recursos
+- Autenticando as rotas com o uso de JWT
